@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <form id="box">
+        <fieldset>
+            <legend>用户注册</legend>
+            <p>
+                用户名: <input type="text" v-model='register.username'/>
+            </p>
+            <p>
+                密码框: <input type="password" v-model='register.pwd'/>
+            </p>
+            <p>
+                性别: 
+                <input type="radio" value="男" v-model='register.sex'>男
+                <input type="radio" value="女" v-model='register.sex'>女
+            </p>
+            <p>
+                爱好(多选按钮):
+                 <input type="checkbox" value="eat" v-model='hobby'/>吃
+                 <input type="checkbox" value="play" v-model='hobby'/>玩
+                 <input type="checkbox" value="sleep" v-model='hobby'/>睡觉
+                 <input type="checkbox" value="sing" v-model='hobby'/>唱歌
+
+            </p>
+            <p>
+                 <input type="submit" value="提交"/>
+                 <input type="submit" value="重置"/>
+            </p>
+
+        </fieldset>
+        <p>
+            填写表单内容如下：
+        </p>
+        <p>
+            用户名:{{register.username}}
+        </p>
+        <p>
+            密码：{{register.pwd}}
+        </p>
+        <p>
+            性别：{{register.sex}}
+        </p>
+        <p>
+            爱好(多选按钮):{{hobby}}
+        </p>
+    </form>
+<script>
+    let vm=new Vue({
+        el:'#box',
+        data:{
+            register:{
+                username:'user',
+                pwd:123456,
+                sex:'女',
+                
+            },
+            hobby:[]
+            
+        }
+    })
+</script>
+</body>
+
+</html>

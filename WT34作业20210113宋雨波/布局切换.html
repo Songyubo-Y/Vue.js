@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .top{
+            width: 800px;
+            height: 45px;
+            background-color: rgb(94, 153, 183);
+            margin: 20px auto;
+            position: relative;
+        }
+        .left{
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            line-height:33px;
+            text-align: center;
+            
+            margin-right: 10px;
+           
+           
+        }
+        .top div{
+                background-color: #47869a;
+            }
+        
+        .right{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            line-height:33px;
+            text-align: center;
+        }
+        .top .leftCo{
+            background-color: rgb(198, 70, 147);
+        }
+    </style>
+</head>
+    <div id="box">
+        <div class="top">
+            <div class="left" :class="{leftCo:msg}" @click="msg=true"><img src="img/lefticon.png" alt=""></div>
+            <div class="right" :class="{leftCo:!msg}" @click="msg=false"><img src="img/righticon.png" alt=""></div>
+        </div>
+        <ul>
+            <li v-for="(item,index) in tab" >
+                <img src="item.image.large" alt="">
+                <p v-show="!msg">{{item.title}}</p>
+
+            </li>
+        </ul>
+    </div>
+<body>
+    <script>
+        let vm = new Vue({
+            el: '#box',
+            data: {
+                tab: [
+
+                    {
+                        "title": "儿童社交的爱与痛（套装全2册）",
+                        "url": "http://product.dangdang.com/25189806.html",
+                        "image": {
+                            "large": "http://img3m6.ddimg.cn/48/21/25189806-1_w_7.jpg",
+                            "small": "http://img3m6.ddimg.cn/48/21/25189806-1_w_7.jpg"
+                        }
+                    },
+                    {
+                        "title": "刘墉口才大师经典套装(畅销30年超值珍藏版)",
+                        "url": "http://product.dangdang.com/23995236.html",
+                        "image": {
+                            "large": "http://img3m6.ddimg.cn/12/33/23995236-1_w_6.jpg",
+                            "small": "http://img3m6.ddimg.cn/12/33/23995236-1_w_6.jpg"
+                        }
+                    },
+                    {
+                        "title": "丹·布朗作品系列：本源",
+                        "url": "http://product.dangdang.com/25253662.html",
+                        "image": {
+                            "large": "http://img3m2.ddimg.cn/49/15/25253662-1_w_3.jpg",
+                            "small": "http://img3m2.ddimg.cn/49/15/25253662-1_l_3.jpg"
+                        }
+                    },
+                    {
+                        "title": "高兴死了!!!（我正在人生低谷，我现在高兴死了！）",
+                        "url": "http://product.dangdang.com/25245058.html",
+                        "image": {
+                            "large": "http://img3m8.ddimg.cn/58/32/25245058-1_w_4.jpg",
+                            "small": "http://img3m8.ddimg.cn/58/32/25245058-1_l_4.jpg"
+                        }
+                    },
+                    {
+                        "title": "谈判：如何在博弈中获得更多(第四版)Everything is Negotiable",
+                        "url": "http://product.dangdang.com/25247638.html",
+                        "image": {
+                            "large": "http://img3m8.ddimg.cn/64/22/25247638-1_l_1.jpg",
+                            "small": "http://img3m8.ddimg.cn/64/22/25247638-1_l_1.jpg"
+                        }
+                    },
+                    {
+                        "title": "好想去这样那样的国家（全6册）",
+                        "url": "http://product.dangdang.com/25261269.html",
+                        "image": {
+                            "large": "http://img3m9.ddimg.cn/33/0/25261269-1_l_3.jpg",
+                            "small": "http://img3m9.ddimg.cn/33/0/25261269-1_l_3.jpg"
+                        }
+                    }
+                ],
+                msg:true
+            },
+
+
+        })
+    </script>
+</body>
+
+</html>

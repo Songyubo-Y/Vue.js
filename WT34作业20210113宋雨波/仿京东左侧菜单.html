@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #box{
+            height: 270px;
+            width: 300px;
+            margin: 0 auto;
+            color: white;
+            background-color: rgb(200, 22, 34);
+        }
+        #box>h3{
+            background-color: rgb(179, 25, 27);
+            line-height: 40px;
+            text-indent: 1em;
+        }
+        ul li{
+            list-style: none;
+            line-height: 20px;
+            margin-left: -20px;
+           
+        }
+        ul li span{
+            display: inline-block;
+        }
+       
+        ul li img{
+           line-height: 20px;
+            float: right;
+            margin-right: 15px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h3>全部商品分类</h3>
+        <ul v-for="(item,index) in produce" :key="index">
+            <li>
+                <span>{{item.name}}</span>
+               <img src="img/bg.png" alt="">
+            </li>
+        </ul>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                produce:[
+                    {name:"家用电器"},
+                    {name:"手机 数码 相机"},
+                    {name:"电脑 办公"},
+                    {name:"家居 家具 家装"},
+                    {name:"男装 女装 珠宝"},
+                    {name:"鞋靴 箱包 钟表"},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

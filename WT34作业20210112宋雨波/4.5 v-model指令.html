@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <!--在表单控件或者组件上创建双向绑定-->
+    <div id="box">
+        <!--双向绑定-->
+        <input type="text" v-model="msg">
+        {{msg}}
+        <input type="radio" value="男" v-model="user.sex">男
+        <input type="radio" value="女" v-model="user.sex">女{{user.sex}}
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                msg:'hello',
+                user:{
+                    sex:'女'
+                },
+            }
+        })
+    </script>
+</body>
+</html>

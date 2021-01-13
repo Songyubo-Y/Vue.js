@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--第一步：引入Vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+</head>
+<body>
+    <!--第二步：创建view视图层：显示数据-->
+    <div id="box">
+        
+        <h1>{{temp}}</h1>
+        <h2>{{temp}}</h2>
+        <h4>5</h4>
+        <p>{{"zhangsan"}}</p>
+        <p>{{1+1}}</p>
+        <p> {{"zhangsan" + "你好" + temp}} </p>
+        <p>{{1>0?"为真的情况":"为假的情况"}}</p>
+    </div>
+    <!--第三步：创建model层，实例化Vue对象-->
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            //变量数据
+            data:{
+                temp:'张三'
+            }
+        })
+    </script>
+    
+</body>
+</html>

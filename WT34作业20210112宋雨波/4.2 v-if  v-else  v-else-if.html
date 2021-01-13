@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+        控制元素显示隐藏，当满足条件时，渲染到页面中，当不满足时就不渲染
+        v-if:当为true时，显示
+        v-else:当if不成立时，显示
+        v-else-if:多条件判断
+    -->
+</head>
+<body>
+    <div id="box">
+        <!-- <span v-if="mas==1">{{mas}}</span>
+        <span v-else>{{msg}}</span> -->
+        <span v-if="msg1==1">{{msg1}}</span>
+        <span v-else-if="msg2==msg1">{{msg2}}</span>
+        <span v-else>{{msg3}}</span>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                msg:'msg1',
+                msg2:'msg2',
+                msg3:'msg3'
+            },
+          
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+           
+        }
+        #box{
+            position: relative;
+            width: 500px;
+            height: 300px;
+            margin: 50px auto;
+            font-size: 27px;
+            font-weight: bold;
+            color: rgb(110, 131, 131);
+            border: 1px solid rgb(144, 183, 8);
+            text-align: center;
+        }
+        input{
+            position: absolute;
+            bottom: 20px;
+            left: 150px;
+            width: 200px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div @click="clickme()">
+            <img src="img/pic.png" alt="">{{msg}}
+        </div>
+        <input type="text" v-show="isshow" v-model="msg">
+    </div>
+        <script>
+            let vm=new Vue({
+                el:'#box',
+                data:{
+                    msg:'Edit Me',
+                    isshow:false
+                },
+                methods:{
+                    clickme(){
+                        this.isshow=!this.isshow
+                    }
+                }
+            })
+        </script>
+</body>
+</html>

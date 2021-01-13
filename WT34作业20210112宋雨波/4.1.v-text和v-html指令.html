@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <!--
+        v-text不能识别html标签
+        v-html可以识别html标签
+    -->
+    <div id="box">
+        <span v-text="msg"></span>
+        <span v-html="msg"></span>
+        <!-- <span>{{msg}}</span> -->
+    </div>
+   
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+               msg:'<h1>123</h1>'
+            }
+        })
+    </script>
+</body>
+</html>

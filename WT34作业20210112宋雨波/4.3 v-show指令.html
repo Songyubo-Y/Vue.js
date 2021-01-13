@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--
+    控制显示和隐藏
+    v-show:设置display来控制显示和隐藏
+
+
+    与v-if的区别？
+    v-if:当满足条件时，渲染到页面中，当不满足时就不渲染
+    如果页面需要频繁控制显示和隐藏的使用v-show
+    如果只是一次性控制显示和隐藏使用v-if
+-->
+</head>
+<body>
+    <div id="box">
+        <span v-show="isshow">
+            我是一个span
+        </span>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                isshow:false
+            },
+           
+        })
+    </script>
+</body>
+</html>

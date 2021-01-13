@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!--第一步：引入Vue.js-->
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <h1 id="box">
+        {{temp}}转为{{temp.split("").reverse().join("")}}
+    </h1>
+    <script>
+         var temp1;
+         var temp2;
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                temp:'hello'
+            }
+          
+          
+        })
+    </script>
+</body>
+</html>

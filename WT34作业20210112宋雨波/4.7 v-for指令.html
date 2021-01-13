@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!--遍历对象-->
+        <ul>
+            <li v-for ="(val,name,index) in user">
+                对象属性值：{{val}}    --对象属性：{{name}}  --索引下标{{index}}
+            </li>
+        </ul>
+           <!--遍历数组-->
+           <ul>
+            <li v-for ="(item,index) in arr" :key="index">
+              {{item}}    {{index}}
+            </li>
+        </ul>
+         <!--遍历对象数组-->
+         <ul>
+            <li v-for ="(item,index) in prolist">
+                {{item}}  {{index}}
+              {{item.pname}}    -{{item.price}}
+              <span v-for="(citem,cindex) in item.size">
+                {{citem}}
+              </span>
+            </li>
+        </ul>
+        <script>
+            let vm=new Vue({
+                el:'#box',
+                data:{
+                    //1.对象
+                    user:{
+                        name:'zhangsan',
+                        age:20
+                    },
+                    //2.数组
+                    arr:["电视机","电脑","电冰箱"],
+                    //3.对象数组，例如产品列表
+                    prolist:[
+                        {pname:"电视机1",price:3000,size:[55,60,70]},
+                        {pname:"电视机2",price:3000},
+                        {pname:"电视机3",price:3000}
+                    ]
+                }
+            })
+        </script>
+    </div>
+</body>
+</html>

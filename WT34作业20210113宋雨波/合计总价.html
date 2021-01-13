@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "微软雅黑";
+            font-weight: bold;
+        }
+
+        #box {
+            width: 400px;
+            height: 450px;
+            margin: 100px auto;
+            background-color: rgb(97, 161, 188);
+        }
+
+        h1 {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        #box div>p {
+            padding-left: 20px;
+            line-height: 50px;
+            background-color: #def820;
+            margin: 10px auto;
+            width: 300px;
+        }
+
+        span {
+            float: right;
+            padding: 0 40px;
+        }
+
+        #box>p {
+
+            margin: 20px 40px 0 40px;
+            border-top: 1px solid white;
+            padding-top: 15px;
+            text-indent: 1em;
+            
+        }
+
+        #box div>.active {
+            background-color: rgb(141, 193, 110);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h1>Services</h1>
+        <div v-for="(item,index) in server" :key="index">
+            <p :class="{active:item.zt}" @click="clickme(index)" :key="index">{{item.name}} <span>{{item.price}}</span>
+            </p>
+        </div>
+        <p>Total <span>{{sum()}}</span></p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#box',
+            data: {
+                server: [
+                    { name: "Web Development", price: 3000, zt: false },
+                    { name: "Python", price: 1000, zt: false },
+                    { name: "Java", price: 2000, zt: false },
+                    { name: "GO", price: 2200, zt: true },
+                ]
+            },
+            methods: {
+                clickme(index) {
+                    this.server[index].zt = !this.server[index].zt;
+                },
+                sum(){
+                    let sumprice=0;
+                    this.server.forEach(item=>{
+                        if(item.zt){
+                            sumprice +=item.price;
+                        }
+                    });
+                    return sumprice;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

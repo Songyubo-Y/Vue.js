@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .green{
+            background-color: greenyellow;
+        }
+        .pink{
+            background-color: pink;
+        }
+        span{
+            display: inline-block;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span v-for="(item,index) in title" :class="item.active?'pink':'green'" @click="clickSpan(index)">
+            {{item.titleText}}
+        </span>
+        <div>
+            你选择了：<span class="green"> {{showText}}</span>
+        </div>
+      
+    </div>
+    <script>
+        let vm =new Vue({
+            el:"#box",
+            data:{
+                showText:"HTML",
+                title:[
+                    {titleText:"HTML",active:1},
+                    {titleText:"CSS",active:0},
+                    {titleText:"JavaScript",active:0},
+                    {titleText:"Vue",active:0}
+                ]
+            },
+            methods:{
+                clickSpan(index){
+                    for(let i in this.title){
+                        this.title[i].active=0
+                    }
+                    this.title[index].active=1;
+                    this.showText=this.title[index].titleText
+                }
+            }
+        })
+    </script>
+</body>
+</html>

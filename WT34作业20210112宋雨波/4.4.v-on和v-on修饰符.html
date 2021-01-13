@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <!--用于事件绑定 v-on:事件名=事件函数名-->
+    <!--缩写：@事件名=事件函数名-->
+    <!--
+        .stop  -调用event.stopPropagation()
+        .prevent  -调用eventDefault()
+        .self   -只当事件是从侦听器绑定的元素本身触发时才触发回调
+    -->
+    <div id="box">
+        <div class="parentdiv" @click.self="parentFn">
+            parentdiv
+            <div class="childdiv" @click="childFn">
+                childdiv
+            </div>
+            <!--解决方案-->
+            <!-- <div class="child" @click.stop="childFn">
+                childdiv
+            </div> -->
+        </div>
+        <input type="text" @keyup.enter="enter" @keydown.up="top">
+    </div>
+
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{},
+            methods:{
+                parentFn(){console.log("parentFn");},
+                childFn(){console.log("childFn");},
+                enter(){console.log("用户回车了");},
+                top(){console.log("按了上键");},
+            }
+        })
+    </script>
+</body>
+</html>

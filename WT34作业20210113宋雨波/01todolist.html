@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <style>
+        .finish{
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="box">
+        <p>任务总数{{arr.length}}；还有{{getUnfinfish()}}未完成；<span>[<a href="#" @click="finish()">完成</a>]</span></p>
+        <p v-for="(item,index) in arr" >
+            <input type="checkbox" v-model="item.isfinish">
+            <span v-show="!item.isEdit" :class="{finish:item.isfinish}" @click="edit(index)">{{item.title}}</span>
+            <input type="text" v-show="item.isEdit" v-model="item.title" @blur="item.isEdit=false">
+        </p>
+      <input type="text" v-model="msg"><button @click="add()">添加</button>
+  
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                arr:[
+                    {title:'设计1',isfinish:false,isEdit:false},
+                    {title:'设计2',isfinish:false,isEdit:false},
+                    {title:'设计3',isfinish:false,isEdit:false}
+                ],
+                msg:'',
+            },
+           
+            methods:{
+                //计算未完成的
+                    getUnfinfish(){
+                        let count=0;
+                        this.arr.forEach(item=>{
+                            if(!item.isfinish)count++;
+                        })
+                        return count;
+                    },
+                    finish(){
+                        //删除arr中，isfinish：true的数据
+                        let newarr=this.arr;//新数组
+                        this.arr=[];//清空
+                        newarr.forEach(item=>{
+                            //为false重新添加到arr里面去
+                            if(!item.isfinish){
+                                this.arr.push(item)
+                            }
+                        })
+                    },
+                //添加
+                add(){
+                    
+                    this.arr.push({title:this.msg,isfinish:false,isEdit:false})
+                    this.msg="";
+                
+                //    this.arr.push({title:this.arr.title,isfinish:false})
+                },
+                edit(index){
+                    if(this.arr[index].isfinish) return;//已完成的不执行
+                    console.log(index);
+                    //点击时，修改当前的isEdit为true
+                    this.arr[index].isEdit=true;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
