@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        #box {
+            width: 500px;
+
+            margin: 20px auto;
+
+        }
+
+        fieldset {
+            border: 2px solid rgb(138, 176, 178);
+        }
+
+        button {
+            line-height: 25px;
+            padding: 2px 5px;
+            background-color: rgb(69, 172, 199);
+
+            color: white;
+            outline: none;
+            border: none;
+        }
+
+        input {
+            line-height: 20px;
+        }
+
+        .list {
+            width: 455px;
+            border: 2px solid rgb(90, 168, 168);
+            background-color: rgb(63, 173, 197);
+            height: 30px;
+        }
+
+        .list>li {
+            float: left;
+            list-style: none;
+            text-align: center;
+            margin: 0px 10px 0px 10px;
+            line-height: 30px;
+            color: white;
+            width: 60px;
+
+        }
+       
+        li {
+            list-style: none;
+        }
+
+        .list>li:nth-of-type(4) {
+            width: 100px;
+        }
+
+        .list1 {
+            background-color: white;
+            border-top: none;
+            overflow: hidden;
+            margin-top: -16px;
+            width: 455px;
+            height: auto;
+
+        }
+
+        .list1>li {
+            color: black;
+            display: inline-flex;
+            width: 455px;
+            border: 1px solid;
+            border: none;
+            clear: both;
+        }
+
+        .list1>li>div {
+            margin-top: 5px;
+            text-align: center;
+            line-height: 30px;
+
+        }
+        .list1>li:nth-of-type(4){
+            width: 455px;
+        }
+        .list1>li:nth-of-type(even) {
+            background-color: rgb(235, 235, 235);
+        }
+
+        .list1>li>div:nth-of-type(1) {
+            width: 11%;
+        }
+
+        .list1>li>div:nth-of-type(2) {
+            width: 26%;
+        }
+
+        .list1>li>div:nth-of-type(3) {
+            width: 9%;
+        }
+
+        .list1>li>div:nth-of-type(4) {
+            width: 35%;
+        }
+
+        .list1>li>div:nth-of-type(5) {
+            width: 9%;
+            font-size: 15px;
+
+        }
+
+        a {
+           margin-bottom: 4px;
+            line-height: 30px;
+            text-decoration: none;
+            display: inline-block;
+            background-color: rgb(61, 174, 201);
+            color: white;
+            padding: 0px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="box">
+        <fieldset>
+            <legend>用户注册</legend>
+            <p>
+                用户名: <input type="text" v-model='username' />
+            </p>
+            <p>
+                年龄: <input type="text" v-model='age' style="margin-left: 16px;"/>
+            </p>
+
+            <p>
+                性别:
+                <select v-model="sex" style="margin-left: 16px;">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </p>
+            <p>
+                手机： <input type="text" placeholder="请输入手机号码" v-model="num" style="margin-left: 6px;">
+            </p>
+            <p>
+                <a href="#" @click="clickme()" style="display: inline-block;padding: 5px;">创建新用户</a>
+            </p>
+
+        </fieldset>
+
+        <ul class="list">
+
+            <li>
+                用户名
+            </li>
+
+            <li>
+                性别
+            </li>
+            <li>
+                年龄
+            </li>
+            <li>
+                手机
+            </li>
+            <li>
+                删除
+            </li>
+        </ul>
+        <ul class="list list1">
+            <li v-for="(item,index) in register" :key="index">
+                <div>{{item.username}}</div>
+                <div>{{item.sex}}</div>
+                <div>{{item.age}}</div>
+                <div>{{item.num}}</div>
+                <div><button @click="delete1(item,index)">删除</button></div>
+            </li>
+        </ul>
+
+    </form>
+    <script>
+        let vm = new Vue({
+            el: '#box',
+            data: {
+                register: [
+                    { username: 'user', sex: '男', num: "13755555154", age: 20 },
+                    { username: 'user', sex: '男', num: "13755555154", age: 21 },
+                ],
+                username:'zhang',
+                sex:"男",
+                num:"1375555555",
+                age:20,
+            },
+            methods: {
+                clickme() {
+                this.register.push({ username:this.username , sex: this.sex, num:this.num, age: this.age })
+                },
+                delete1(item,index){
+                   this.register.splice(index,1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

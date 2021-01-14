@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js">
+
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+      
+        .top{
+            display: flex;
+            width: 450px;
+            margin: 20px auto;
+            
+            overflow: hidden;
+        }
+        .top>li{
+            list-style: none;
+            width: 20%;
+            text-align: center;
+            background-color: rgb(207, 238, 240);
+            line-height: 40px;
+            
+        }
+        .list{
+            display: flex;
+            width: 450px;
+            overflow: hidden;
+            margin: 20px auto;
+            box-sizing: border-box;
+            height: 300px;
+            border: 1px solid rgb(240, 240, 240);
+            margin-top: -20px;
+        }
+        .list>li{
+            list-style: none;
+            display: flex;
+            text-align: center;
+            line-height: 30px;
+        }
+        .list>li>div{
+            width: 90px;
+        }
+        button{
+            width: 20px;
+        }
+        .delete{
+            width: 40px;
+        }
+        p{
+            width: 450px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul class="top">
+            <li></li>
+            <li>商品名称</li>
+            <li>商品单价</li>
+            <li>商品数量</li>
+            <li>操作</li>
+        </ul>
+        <ul class="list">
+            <li v-for="(item,index) in lists" :key="index">
+                <div>{{item.list}}</div>
+                <div>{{item.name}}</div>
+                <div>{{item.price}}</div>
+                <div><button @click="jian(index)">-</button>{{item.num}}<button @click="jia(index)">+</button></div>
+                <div><button class="delete" @click="delete1(item,index)">移除</button></div>
+            </li>
+        </ul>
+        <p>总价：￥{{sum()}}</p>
+    </div>
+   <script>
+       let vm=new Vue({
+           el:'#box',
+           data:{
+               lists:[
+                    {list:1,name:"iphone",price:7999,num:1},
+                    {list:2,name:"荣耀10",price:2399,num:1},
+                    {list:3,name:"华为P20",price:3399,num:1},
+                    {list:4,name:"小米8",price:3999,num:1}
+               ]
+           },
+           methods:{
+                delete1(item,index){
+                   
+                    this.lists.splice(index,1)
+                   
+                },
+                sum(){
+                    let sum=0;
+                    this.lists.forEach(item=>{
+                        sum +=item.price*item.num;
+                    });
+                    return sum;
+                },
+                jian(index){
+                   if(this.lists[index].num>=1){
+                    this.lists[index].num-=this.lists[index].num;
+                   }else{
+                    this.lists[index].num=1;
+                   }
+                   
+                    
+                },
+                jia(index){
+                    this.lists[index].num+=1;
+                }
+           }
+       })
+   </script>
+</body>
+</html>
