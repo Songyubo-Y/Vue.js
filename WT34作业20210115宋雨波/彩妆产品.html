@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script src="./axios.min.js"></script>
+    <script src="./vue.js"></script>
+    <style>
+        li{
+            list-style: none;
+            border-bottom: 1px dashed black;
+            width: 400px;
+            margin-bottom: 10px;
+        }
+        span{
+            display: inline-block;
+            width: 20px;
+            height: 20px ;
+            border-radius: 50%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 10px;
+            margin-left: 25px;
+        }
+        p{
+            margin-left: 50px;
+        }
+        h3{
+            margin-left: 45px;
+            background-color: rgb(233, 24, 90);
+            line-height: 40px;
+            color: white;
+            text-indent: 1em;
+            width: 400px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h3>大家都喜欢的彩妆</h3>
+        <ul>
+            <li v-for="(item,index) in list.lists" :key="index">
+                <span> {{item.num}}</span>{{item.name}}
+                <p><img src="item.imgUrl" alt=""></p>
+                <p>{{item.desc}}</p>
+               
+            </li>
+           
+        </ul>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                list:{}
+            },
+            mounted(){
+                axios.get("./data1.json")
+                .then(
+                    res=>{
+                        console.log(res.data.lists)
+                        this.list=res.data;
+                }).catch(err=>{
+                    console.log(err)
+                })
+            }
+        })
+    </script>
+</body>
+</html>

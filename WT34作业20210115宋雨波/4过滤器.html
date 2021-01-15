@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        {{price | fmtPrice}}
+        <ul>
+            <li v-for="(item,index) in prolist">
+                {{item.name}} -{{item.price | discount(0.5) | fmtPrice}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                price:1000,
+                prolist:[
+                    {name:'电视机1',price:3000},
+                    {name:'电视机2',price:5000},
+                    {name:'电视机3',price:4000}
+                ]
+            },
+            //定义过滤器：一个带有返回值的函数
+            filters:{
+                fmtPrice(val){
+                    console.log(val);
+                    return "￥"+val;
+                },
+                discount(val,num){
+                    return val*num;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

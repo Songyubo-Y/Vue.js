@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script src="./axios.min.js"></script>
+    <script src="./vue.js"></script>
+    <style> 
+       .span2{
+           float: right;
+         width: 300px;
+       }
+       .span3{
+           margin-right: 30px;
+           width: 5%;
+       }
+       span{
+           text-align: center;
+           display: inline-block;
+       }
+       .span1{
+           width: 500px;
+       }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="(item,inde) in list.data">
+            <span class="span3">{{item.reply_count}}/{{item.visit_count}}</span>    <span class="span1">{{item.title}}</span> <span class="span2">{{item.create_at}} </span>
+            </li>
+        </ul>
+    </div>
+   <script>
+      
+       
+       let vm=new Vue({
+          
+           el:'#box',
+           data:{
+           
+          list:{}
+            
+           },
+          
+         mounted(){
+            axios.get("https://cnodejs.org/api/v1/topics")
+                .then(
+                    res=>{
+                        console.log(res.data.data)
+                      this.list=res.data;
+                }).catch(err=>{
+                    console.log(err)
+                })
+         }
+            
+       })
+      
+   </script>
+</body>
+</html>

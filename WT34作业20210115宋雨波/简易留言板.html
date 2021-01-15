@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./vue.js"></script>
+    <style>
+        li{
+            list-style: none;
+            border: 1px solid rgb(255, 255, 255);
+        }
+        ul{
+            border: 1px solid rgb(51, 204, 51);
+        }
+        p{
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button @click="clickme()">点击加载评论</button>
+        <ul>
+             <li v-for="(item,index) in list.commentList" :key="index">
+                {{item.commentTxt}}
+                <p>{{item.createAt}}</p>
+            </li> 
+        </ul>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#box',
+            data:{
+                list:{}
+            },
+            methods:{
+                clickme(){
+                    axios.get("./data.json")
+                    .then(
+                        res=>{
+                            console.log(res.data.data.commentList);
+                          
+                        }
+                    ).catch(err=>{
+                        console.log(err);
+                    })
+                }
+            },
+            mounted(){
+                axios.get("./data.json")
+                    .then(
+                        res=>{
+                            console.log(res.data.data);
+                            this.list=res.data.data
+                        }
+                    ).catch(err=>{
+                        console.log(err);
+                    })
+            }
+        })
+    </script>
+</body>
+</html>

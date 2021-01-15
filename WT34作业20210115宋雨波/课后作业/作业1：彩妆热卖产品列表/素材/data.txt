@@ -1,0 +1,21 @@
+[{
+            num: 1,
+            name: 'Za姬芮新能真皙美白隔离霜 35g',
+            imgUrl: "image/icon-1.jpg",
+            desc:"￥59.90 最近13403人购买"
+        }, {
+            num: 2,
+            name: '美宝莲精纯矿物奇妙新颜乳霜BB霜 30ml',
+            imgUrl: "image/icon-2.jpg",
+            desc:"￥89.00 最近13610人购买"
+        }, {
+            num: 3,
+            name: '菲奥娜水漾CC霜40g',
+            imgUrl: "image/icon-3.jpg",
+            desc:"￥59.90 最近13403人购买"
+        }, {
+            num: 4,
+            name: 'HC 蝶翠诗橄榄卸妆油 200ml',
+            imgUrl: "image/icon-4.jpg",
+            desc:"￥169.00 最近16757人购买"
+        }]

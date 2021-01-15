@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./vue.js"></script>
+    <style> 
+        #box{
+            width: 400px;
+            height: 50px;
+            border: 1px solid greenyellow;
+            margin: 20px auto;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+      {{times.year}}-{{times.month | check}}-{{times.day| check}} {{times.hour| check}}:{{times.minutes| check}}:{{times.seconds| check}}
+    </div>
+   <script>
+      
+       
+       let vm=new Vue({
+          
+           el:'#box',
+           data:{
+            //    year:new Date().getFullYear(),
+            //    month:new Date().getMonth(),
+            //    day:new Date().getDay(),
+            //    hour:new Date().getHours(),
+            //    minutes:new Date().getMinutes(),
+            //    time:new Date().getTime(),
+            times:{year:"",month:"",day:"",hour:"",minutes:"",seconds:""}
+            
+           },
+           mounted(){
+            let timer;
+                timer=setInterval(this.chuli,1000)
+           },
+           methods:{
+               chuli(){
+                   var date=new Date();
+                   this.times.year=date.getFullYear();
+                   this.times.month=date.getMonth()+1;
+                   this.times.day=date.getDay();
+                   this.times.hour=date.getHours();
+                   this.times.minutes=date.getMinutes();
+                   this.times.seconds=date.getSeconds();
+                   
+               }
+            },
+            filters:{
+                check(val){
+                    if(val<10){
+                        return "0"+val;
+                    }
+                    return val;
+                }
+            }
+       })
+      
+   </script>
+</body>
+</html>
